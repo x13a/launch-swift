@@ -43,6 +43,6 @@ public struct LaunchSocket {
         for i in 0..<cnt {
             result.append(fds[i])
         }
-        return.success(result)
+        return .success(result)
     }
 }
