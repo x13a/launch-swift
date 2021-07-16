@@ -39,10 +39,10 @@ public struct LaunchSocket {
             }
         }
         defer { fds.deallocate() }
-        var result = [Int32]()
+        var results: [Int32] = Array(repeating: 0, count: cnt)
         for i in 0..<cnt {
-            result.append(fds[i])
+            results[i] = fds[i]
         }
-        return .success(result)
+        return .success(results)
     }
 }
