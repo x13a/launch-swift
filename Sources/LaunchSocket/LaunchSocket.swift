@@ -17,7 +17,7 @@ public struct LaunchSocket {
             case .alreadyActivated: return "The specified socket has already been activated"
             case .rv(let rv):
                 if #available(macOS 11.0, *) {
-                    return System.Errno.init(rawValue: rv).localizedDescription
+                    return System.Errno(rawValue: rv).localizedDescription
                 } else {
                     return String(cString: strerror(rv))
                 }
@@ -39,7 +39,7 @@ public struct LaunchSocket {
             }
         }
         defer { fds.deallocate() }
-        var results: [Int32] = Array(repeating: 0, count: cnt)
+        var results = [Int32](repeating: 0, count: cnt)
         for i in 0..<cnt {
             results[i] = fds[i]
         }
